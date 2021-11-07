@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SplashScreen.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
+focus_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel"]
+anchor_left = 0.313
+anchor_top = 0.303
+anchor_right = 0.343
+anchor_bottom = 0.303
+margin_left = 118.0
+margin_top = 75.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/Panel/Panel"]
+margin_left = 56.0
+margin_top = 216.0
+margin_right = 216.0
+margin_bottom = 256.0
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Panel/Panel"]
+margin_left = 56.0
+margin_top = 272.0
+margin_right = 216.0
+margin_bottom = 304.0
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Panel"]
+margin_left = 16.0001
+margin_top = 24.0
+margin_right = 266.0
+margin_bottom = 191.0
+text = "Instructions:
+
+W,A,S,D + Mouse for movement
+
+E to interact (must be close to buttons)
+
+Space to jump
+
+ESC to return to this screen
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/Panel/Panel/ContinueButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Panel/QuitButton" to="." method="_on_QuitButton_pressed"]

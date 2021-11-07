@@ -1,6 +1,5 @@
 extends Area
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -13,9 +12,10 @@ func _ready():
 
 func button_ready(body):
 	if(body.is_player):
-		body.set_ready_button(get_parent().get_parent().get_parent())
+		body.set_ready_button(get_parent().get_parent().get_parent().get_parent())
 
 
 func button_unready(body):
 	if(body.is_player):
 		body.set_ready_button(false)
+

@@ -28,11 +28,13 @@ func add_text(t):
 	
 	$Sprite3D/Viewport/Label.text = text
 
-func click_button():
+func click_button(player):
 	if clicking:
 		return false
+	player.get_parent().run_day(current_day)
 	clicking = true
-	$Button.translate_object_local($Button.transform.basis.z*5)
+	$ButtonPanel/Button.translate_object_local($ButtonPanel/Button.transform.basis.z*5)
 	yield(get_tree().create_timer(1.0), "timeout")
-	$Button.translate_object_local($Button.transform.basis.z*-5)
+	$ButtonPanel/Button.translate_object_local($ButtonPanel/Button.transform.basis.z*-5)
 	clicking = false
+ 

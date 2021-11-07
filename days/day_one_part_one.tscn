@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://day_one_part_one.gd" type="Script" id=1]
+[ext_resource path="res://days/day_one_part_one.gd" type="Script" id=1]
 
 [node name="day_one_part_one" type="Spatial"]
 script = ExtResource( 1 )

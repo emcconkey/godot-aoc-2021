@@ -19,17 +19,21 @@ var mouseDelta: Vector2 = Vector2()
 onready var camera :Camera = get_node("Camera")#only when node is initialized
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 
 
 func _physics_process(delta):#called 60 times per sec
+
+	if get_parent().ui_open:
+		return false
+
 	if Input.is_action_pressed("ui_cancel"):
-		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+		get_parent().open_ui()
 
 	if Input.is_action_just_pressed("interact"):
 		if ready_button:
-			get_parent().run_day(ready_button.current_day)
-			ready_button.click_button()
+			ready_button.click_button(self)
 
 	velocity.x = 0
 	velocity.z = 0
@@ -58,6 +62,9 @@ func _physics_process(delta):#called 60 times per sec
 		velocity.y = jumpForce
 
 func _process(delta):#not physics related
+	if get_parent().ui_open:
+		return false
+
 	camera.rotation_degrees.x -= mouseDelta.y*sensitivity*delta
 	
 	camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle,maxlookAngle)
@@ -66,7 +73,12 @@ func _process(delta):#not physics related
 	
 	#reset mousedelta
 	mouseDelta = Vector2()
+
 func _input(event):
+
+	if get_parent().ui_open:
+		return false
+
 	if event is InputEventMouseMotion	:
 		mouseDelta = event.relative
 
