@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://SplashScreen.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.333333, 0.74902, 0.305882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.129412, 0.584314, 0.180392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.760784, 0.2, 0.2, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.603922, 0.168627, 0.168627, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -37,7 +49,10 @@ __meta__ = {
 margin_left = 56.0
 margin_top = 216.0
 margin_right = 216.0
-margin_bottom = 256.0
+margin_bottom = 254.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,19 +60,23 @@ __meta__ = {
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Panel/Panel"]
 margin_left = 56.0
-margin_top = 272.0
+margin_top = 278.0
 margin_right = 216.0
-margin_bottom = 304.0
+margin_bottom = 318.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/Panel"]
-margin_left = 16.0001
-margin_top = 24.0
-margin_right = 266.0
-margin_bottom = 191.0
+margin_left = -78.96
+margin_top = 5.76001
+margin_right = 408.04
+margin_bottom = 206.76
+custom_colors/font_color = Color( 0.380392, 0.898039, 0.423529, 1 )
 text = "Instructions:
 
 W,A,S,D + Mouse for movement
@@ -67,6 +86,8 @@ E to interact (must be close to buttons)
 Space to jump
 
 ESC to return to this screen
+
+You can resize this window to fit your screen/system rendering performance
 "
 __meta__ = {
 "_edit_use_anchors_": false
