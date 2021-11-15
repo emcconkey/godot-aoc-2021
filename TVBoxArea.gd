@@ -13,7 +13,7 @@ func _ready():
 
 func button_ready(body):
 	if(body.is_player):
-		body.set_ready_button(get_parent().get_parent().get_parent())
+		body.set_ready_button(self.owner)
 
 
 func button_unready(body):

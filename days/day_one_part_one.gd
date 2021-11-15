@@ -12,12 +12,12 @@ func go(mainscript):
 		for j in input:
 			var second = int(j.strip_edges())
 			if first + second == 2020:
-				var out = ""
-				out += "First: " + str(first) + "\n"
-				out += "Second: " + str(second) + "\n"
-				out += "Result: " + str(first*second) + "\n"
-				return out
-	return "Error: not found"
+				mainscript.print("First: " + str(first) + "\n")
+				mainscript.print("Second: " + str(second) + "\n")
+				mainscript.print("Result: " + str(first*second) + "\n")
+				return
+	mainscript.print("Error: not found!\n")
+
 
 # func go(mainscript):
 # 	var data = mainscript.read_file('day1.txt')

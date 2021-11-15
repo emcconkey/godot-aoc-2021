@@ -2,6 +2,9 @@ extends Spatial
 var mutex
 var clicking = false
 
+export var monitor:NodePath
+export var button:NodePath
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,11 +17,11 @@ func _ready():
 
 
 func set_label(t):
-	$Sprite3D/Viewport/Label.text = t
+	get_node(monitor).text = t
 
 func add_text(t):
 	mutex.lock()
-	var text = $Sprite3D/Viewport/Label.text
+	var text = get_node(monitor).text
 	text = text + t
 	var lines = text.split('\n')
 	text = ""
@@ -30,15 +33,15 @@ func add_text(t):
 		if lines[i] != "":
 			text += (lines[i] + "\n")
 	
-	$Sprite3D/Viewport/Label.text = text
+	get_node(monitor).text = text
 	mutex.unlock()
 
 func click_button(player):
 	if clicking:
 		return false
-	$Sprite3D/Viewport/Label.text = "Debug screen is active...\n"
+	get_node(monitor).text = "Debug screen is active...\n"
 	clicking = true
-	$Stairs/ButtonPanel/Button.translate_object_local($Stairs/ButtonPanel/Button.transform.basis.z*5)
+	get_node(button).translate_object_local(get_node(button).transform.basis.z*5)
 	yield(get_tree().create_timer(1.0), "timeout")
-	$Stairs/ButtonPanel/Button.translate_object_local($Stairs/ButtonPanel/Button.transform.basis.z*-5)
+	get_node(button).translate_object_local(get_node(button).transform.basis.z*-5)
 	clicking = false
