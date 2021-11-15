@@ -5,8 +5,6 @@ var clicking = false
 
 export var monitor:NodePath
 export var debug_monitor:NodePath
-export var button:NodePath
-
 
 func _ready():
 	pass # Replace with function body.
@@ -44,17 +42,19 @@ func add_text(t, debug=false):
 
 	for i in range(start, lines.size()):
 		if lines[i] != "":
-			text += (lines[i] + "\n")
+			text += (lines[i])
+			if i < lines.size() - 1:
+				text += "\n"
 	
 	get_node(mon).text = text
 
 func click_button(player):
 	if clicking:
-		return false
+		return false	
 	player.get_parent().run_day(current_day)
 	clicking = true
-	get_node(button).translate_object_local(get_node(button).transform.basis.z*5)
 	yield(get_tree().create_timer(1.0), "timeout")
-	get_node(button).translate_object_local(get_node(button).transform.basis.z*-5)
 	clicking = false
  
+func process_input():
+	pass

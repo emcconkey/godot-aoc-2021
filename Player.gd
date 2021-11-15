@@ -25,15 +25,8 @@ func _ready():
 
 func _physics_process(delta):#called 60 times per sec
 
-	if get_parent().ui_open:
+	if get_parent().ui_open or get_parent().input_captured:
 		return false
-
-	if Input.is_action_pressed("ui_cancel"):
-		get_parent().open_ui()
-
-	if Input.is_action_just_pressed("interact"):
-		if ready_button:
-			ready_button.click_button(self)
 
 	velocity.x = 0
 	velocity.z = 0
@@ -61,6 +54,7 @@ func _physics_process(delta):#called 60 times per sec
 	if (Input.is_action_pressed("jump")) and is_on_floor():
 		velocity.y = jumpForce
 
+
 func _process(delta):#not physics related
 	if get_parent().ui_open:
 		return false
@@ -74,13 +68,26 @@ func _process(delta):#not physics related
 	#reset mousedelta
 	mouseDelta = Vector2()
 
-func _input(event):
-
-	if get_parent().ui_open:
-		return false
-
-	if event is InputEventMouseMotion	:
-		mouseDelta = event.relative
-
 func set_ready_button(button):
 	ready_button = button
+
+func _input(event):
+
+	# Handle mouse movement
+	if !get_parent().ui_open:
+		if event is InputEventMouseMotion:
+			mouseDelta = event.relative
+
+	if get_parent().input_captured:
+		if event is InputEventKey and event.pressed and not event.echo:
+			get_parent().debug_print(event.as_text())
+			ready_button.process_input(event.as_text())
+
+	if Input.is_action_pressed("ui_cancel"):
+		get_parent().open_ui()
+		return true	
+
+	if Input.is_action_just_pressed("interact"):
+		if ready_button:
+			ready_button.click_button(self)
+			return true

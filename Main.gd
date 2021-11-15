@@ -4,8 +4,6 @@ extends Spatial
 # var a = 2
 # var b = "text"
 var box_preload = preload("res://TVBox.tscn")
-var debugbox_preload = preload("res://DebugBox.tscn")
-var debug_screen
 var splash_preload = preload("res://SplashScreen.tscn")
 var splash_screen
 var current_box
@@ -13,16 +11,14 @@ var current_day
 var current_function
 var processing
 var ui_open = true
+var input_captured = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	splash_screen = splash_preload.instance()
 	open_ui()
 	$Player.translate(Vector3(-1,-1,-1))
-	debug_screen = debugbox_preload.instance()
-	add_child(debug_screen)
-	debug_screen.translate(Vector3(10,0,24))
-	debug_screen.rotate(Vector3.UP, deg2rad(180))
 	add_day(1, "day_one_part_one", "Press 'E' to start!\nC:\\> \n")
 
 

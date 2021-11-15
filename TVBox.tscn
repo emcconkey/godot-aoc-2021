@@ -1,9 +1,8 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Desk.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://TVBox.gd" type="Script" id=2]
 [ext_resource path="res://TVBoxArea.gd" type="Script" id=3]
-[ext_resource path="res://TVBoxKinematicBody.gd" type="Script" id=4]
 [ext_resource path="res://new-486.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://CONSOLA.TTF" type="DynamicFontData" id=6]
 [ext_resource path="res://img/intel.png" type="Texture" id=7]
@@ -13,77 +12,41 @@
 [ext_resource path="res://keyboard2.obj" type="ArrayMesh" id=11]
 [ext_resource path="res://img/stickynote.png" type="Texture" id=12]
 
-[sub_resource type="SpatialMaterial" id=9]
-albedo_color = Color( 0.513726, 0.513726, 0.513726, 1 )
-
-[sub_resource type="BoxShape" id=2]
-
-[sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0.121569, 0.85098, 0.266667, 1 )
-
-[sub_resource type="BoxShape" id=10]
-
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.964706, 0.854902, 0.270588, 1 )
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 0.92549, 0.686275, 0.223529, 1 )
 
-[sub_resource type="ConvexPolygonShape" id=14]
+[sub_resource type="ConvexPolygonShape" id=7]
 points = PoolVector3Array( -20.1942, -10.1942, 17.2816, -20.1942, 10.3883, 17.2816, -19.8388, -10, 14.5888, -19.4834, 10, 14.6144, -17.8601, -10.1942, 14.5631, -17.8601, 10.3883, 14.5631, -9.70368, -9.02764, 14.5631, -9.70368, 9.22182, 14.5631, 16.5417, -9.68382, 15, 16.5417, 9.87799, 15, 17.4757, -10.1942, 17.2813, 17.4757, 10.3883, 17.2813 )
 
-[sub_resource type="ConvexPolygonShape" id=15]
+[sub_resource type="ConvexPolygonShape" id=8]
 points = PoolVector3Array( -20, -9.81302, 0.0791069, -20, -9.81302, 14.2898, -19.9963, 10, 0.0842645, -19.9963, 10, 14.2847, -17.8633, -10.1942, -0.194175, -17.8633, -10.1942, 14.5631, -17.8633, 10.3883, -0.194175, -17.8633, 10.3883, 14.5631, -12, -9.1078, 12.394, -10, -8.52071, 2.0507, -10, -8.52071, 14.1532, -10, 8.71489, 2.0507, -10, 8.71489, 14.1532 )
 
-[sub_resource type="ConvexPolygonShape" id=16]
+[sub_resource type="ConvexPolygonShape" id=9]
 points = PoolVector3Array( 17.4757, -10.1942, 14.95, 17.4757, 10.3883, 14.95, 17.5195, -9.86257, 17, 17.527, 10, 16.9518, 17.8645, -10.1942, -0.194174, 17.8645, 10.3883, -0.194174, 20.1942, -10.1942, -0.194174, 20.1942, -10.1942, 17.2816, 20.1942, 10.3883, -0.194174, 20.1942, 10.3883, 17.2816 )
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_color = Color( 0.0431373, 0.184314, 0.00392157, 1 )
 metallic = 1.0
 metallic_texture_channel = 2
 
-[sub_resource type="ViewportTexture" id=12]
+[sub_resource type="ViewportTexture" id=11]
 viewport_path = NodePath("Desk2/main-monitor/CSGBox/Sprite3D/Viewport")
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 6 )
 
-[sub_resource type="ViewportTexture" id=17]
+[sub_resource type="ViewportTexture" id=13]
 viewport_path = NodePath("Desk2/debug-monitor/CSGBox/Sprite3D/Viewport")
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 2 )
 monitor = NodePath("Desk2/main-monitor/CSGBox/Sprite3D/Viewport/Label")
 debug_monitor = NodePath("Desk2/debug-monitor/CSGBox/Sprite3D/Viewport/Label")
-button = NodePath("ButtonPanel/Button")
-
-[node name="ButtonPanel" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.1, -1.50628, -0.466744, 0.277768 )
-width = 0.5
-height = 1.0
-depth = 1.0
-material = SubResource( 9 )
-
-[node name="KinematicBody" type="KinematicBody" parent="ButtonPanel"]
-script = ExtResource( 4 )
-
-[node name="CollisionShape" type="CollisionShape" parent="ButtonPanel/KinematicBody"]
-transform = Transform( 0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.8, 0, 0, 0 )
-shape = SubResource( 2 )
-
-[node name="Button" type="CSGCylinder" parent="ButtonPanel"]
-transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1, -4.37114e-08, -0.0135863, 0.371681, 0.947199 )
-sides = 18
-material = SubResource( 6 )
-
-[node name="Area" type="Area" parent="ButtonPanel/Button"]
-transform = Transform( 4.63886, 1.86575, -8.15545e-08, -1.86575, 4.63886, 1.5786e-08, 8.15544e-08, 1.57862e-08, 5, -5.28374, 3.99256, -1.78814e-07 )
-script = ExtResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="ButtonPanel/Button/Area"]
-transform = Transform( 1.2, 0, 0, 0, 2, 0, 0, 0, 0.5, 0.548549, 0.631, -0.00999999 )
-shape = SubResource( 10 )
 
 [node name="TopLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23866, 1.84731 )
@@ -111,26 +74,39 @@ visible = false
 layers = 2
 cast_shadow = 0
 radius = 0.25
-material = SubResource( 8 )
+material = SubResource( 5 )
 
 [node name="Desk2" type="StaticBody" parent="."]
+
+[node name="Keyboard" type="MeshInstance" parent="Desk2"]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 8.43769e-15, 0, -8.43769e-15, 0.15, 0.361591, 0.0279559, 0.412561 )
+mesh = ExtResource( 11 )
+material/0 = null
+
+[node name="Area" type="Area" parent="Desk2/Keyboard"]
+transform = Transform( 3.33331, 0.0124497, -5.44187e-10, 9.55318e-14, -1.45705e-07, -3.33333, -0.0124497, 3.33331, -1.45704e-07, -3.35012, 0.171445, -0.600812 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Desk2/Keyboard/Area"]
+transform = Transform( 1.2, 0, 0, 0, 2, 0, 0, 0, 0.5, 0.548549, 0.631, -0.00999999 )
+shape = SubResource( 4 )
 
 [node name="Desk" type="MeshInstance" parent="Desk2"]
 transform = Transform( 0.05, 0, 0, 0, -2.18557e-09, 0.06, 0, -0.05, -2.62268e-09, 0, -1.01699, 0 )
 mesh = ExtResource( 1 )
-material/0 = SubResource( 11 )
+material/0 = SubResource( 6 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Desk2"]
 transform = Transform( 0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 0, -0.843154, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Desk2"]
 transform = Transform( 0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 0, -0.843154, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Desk2"]
 transform = Transform( 0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 0, -0.843154, 0 )
-shape = SubResource( 16 )
+shape = SubResource( 9 )
 
 [node name="main-monitor" type="MeshInstance" parent="Desk2"]
 transform = Transform( 0.0193865, 0.00491562, 2.14868e-10, 2.91434e-16, -8.74228e-10, 0.02, 0.00491562, -0.0193865, -8.47411e-10, 0.58877, 0.551916, -0.54451 )
@@ -168,11 +144,11 @@ omni_range = 1.0
 
 [node name="CSGBox" type="CSGBox" parent="Desk2/main-monitor"]
 transform = Transform( 18.5714, -2.17338e-14, 0, 4.76837e-07, -6.86894e-07, -1.42857, -7.10543e-14, 15.7143, -6.24449e-08, 0.0814724, -30.3132, 0.745796 )
-material = SubResource( 1 )
+material = SubResource( 10 )
 
 [node name="Sprite3D" type="Sprite3D" parent="Desk2/main-monitor/CSGBox"]
 transform = Transform( 0.5, 0, 0, 0, 0.499999, 2.11758e-22, 0, -2.71051e-20, 0.5, 0.0920552, -0.104269, 1.27621 )
-texture = SubResource( 12 )
+texture = SubResource( 11 )
 
 [node name="Viewport" type="Viewport" parent="Desk2/main-monitor/CSGBox/Sprite3D"]
 size = Vector2( 400, 400 )
@@ -185,7 +161,7 @@ render_target_v_flip = true
 [node name="Label" type="Label" parent="Desk2/main-monitor/CSGBox/Sprite3D/Viewport"]
 margin_right = 500.0
 margin_bottom = 500.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0.890196, 0.117647, 1 )
 custom_colors/font_outline_modulate = Color( 0.027451, 0.305882, 0.0470588, 1 )
 
@@ -223,11 +199,11 @@ omni_range = 1.0
 
 [node name="CSGBox" type="CSGBox" parent="Desk2/debug-monitor"]
 transform = Transform( 18.5714, 0, 0, 0, -6.86894e-07, -1.42857, 0, 15.7143, -6.24449e-08, 0.081471, -30.3132, 0.570271 )
-material = SubResource( 1 )
+material = SubResource( 10 )
 
 [node name="Sprite3D" type="Sprite3D" parent="Desk2/debug-monitor/CSGBox"]
 transform = Transform( 0.5, 0, 0, 0, 0.499999, 2.11758e-22, 0, -2.71051e-20, 0.5, 0.0920552, -0.104269, 1.27621 )
-texture = SubResource( 17 )
+texture = SubResource( 13 )
 
 [node name="Viewport" type="Viewport" parent="Desk2/debug-monitor/CSGBox/Sprite3D"]
 size = Vector2( 400, 400 )
@@ -240,16 +216,11 @@ render_target_v_flip = true
 [node name="Label" type="Label" parent="Desk2/debug-monitor/CSGBox/Sprite3D/Viewport"]
 margin_right = 500.0
 margin_bottom = 500.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.890196, 0.564706, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0.305882, 0.0392157, 0.027451, 1 )
 text = "3d Label has text in it now
 "
 
-[node name="Keyboard" type="MeshInstance" parent="Desk2"]
-transform = Transform( 0.15, 0, 0, 0, 0.15, 8.43769e-15, 0, -8.43769e-15, 0.15, 0.361591, 0.0279559, 0.412561 )
-mesh = ExtResource( 11 )
-material/0 = null
-
-[connection signal="body_entered" from="ButtonPanel/Button/Area" to="ButtonPanel/Button/Area" method="button_ready"]
-[connection signal="body_exited" from="ButtonPanel/Button/Area" to="ButtonPanel/Button/Area" method="button_unready"]
+[connection signal="body_entered" from="Desk2/Keyboard/Area" to="Desk2/Keyboard/Area" method="button_ready"]
+[connection signal="body_exited" from="Desk2/Keyboard/Area" to="Desk2/Keyboard/Area" method="button_unready"]
